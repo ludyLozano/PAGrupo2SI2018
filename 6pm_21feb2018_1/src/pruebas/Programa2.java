@@ -6,24 +6,21 @@ package pruebas;
  */
 public class Programa2 {    
     public static void main(String[] args) {
-        String nombre1 = "pedro";
-        String nombre2 = "laura";        
-        String nombre3 = "oskr";
+        //[2][3][4]
+        int[][][] numeros =
+        {
+            {
+                {5,2,1,9},
+                {3,20,11,90},
+                {10,21,12,91}                    
+            },
+            {
+                {50,28,16,96},
+                {3,25,17,95},
+                {100,28,122,910}                    
+            }
+        };
         
-        String[] nombres1 = new String[3];
-        String[] nombres2 = {"pedro","laura","oskr"};
-        
-        for(String nombre : nombres2) {
-            System.out.println(nombre);
-        }
-        
-        /*
-        int i=0;
-        while(i < nombres2.length) {
-            System.out.println(nombres2[i]);            
-            
-            i++;
-        }
-        */
+        System.out.println(numeros[0][2][3]);
     }    
 }
