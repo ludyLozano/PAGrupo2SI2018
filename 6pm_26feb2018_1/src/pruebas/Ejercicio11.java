@@ -5,7 +5,7 @@ package pruebas;
  *
  * @author ONivia
  */
-public class Programa {
+public class Ejercicio11 {
     public static void main(String[] args) {
         ejercicio11();
     }
