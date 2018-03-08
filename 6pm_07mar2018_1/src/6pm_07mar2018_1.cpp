@@ -7,9 +7,16 @@
 //============================================================================
 
 #include <iostream>
+#include "libs/Operaciones.h"
 using namespace std;
+using namespace principal2;
 
 int main() {
-	cout << "Hola companeros!!!" << endl; // prints !!!Hello World!!!
+	int resultado = 0;
+
+	resultado = suma(10,20);
+
+	cout<<"La suma es: "<<resultado<<endl;
+
 	return 0;
 }
