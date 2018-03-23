@@ -9,15 +9,19 @@
 #include <iostream>
 using namespace std;
 
-void f1(int i) {
-	cout<<"paso x f1: "<<i<<endl;
+void suma(int a, int b) {
+	cout<<"la suma es:"<<a+b<<endl;
+}
+
+void resta(int a, int b) {
+	cout<<"la resta es:"<<a-b<<endl;
 }
 
 int main() {
 
-	void (*pf)(int) = f1;
+	void (*pf[])(int,int) = {suma,resta};
 
-	pf(120);
+	pf[1](100,20);
 
 	return 0;
 }
