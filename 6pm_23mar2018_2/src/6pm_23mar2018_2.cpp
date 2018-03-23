@@ -9,19 +9,23 @@
 #include <iostream>
 using namespace std;
 
-void suma(int a, int b) {
-	cout<<"la suma es:"<<a+b<<endl;
+void f1(int i) {
+	cout<<"paso x f1: "<<i<<endl;
+}
+void f2(int i) {
+	cout<<"paso x f2: "<<i<<endl;
 }
 
-void resta(int a, int b) {
-	cout<<"la resta es:"<<a-b<<endl;
+void wrapper(void (*pf1)(int) , int i) {
+	pf1(i);
 }
+
 
 int main() {
+	void (*pf2)(int) = f1;
+	void (*pf3)(int) = f2;
 
-	void (*pf[])(int,int) = {suma,resta};
-
-	pf[1](100,20);
+	wrapper(pf3,100);
 
 	return 0;
 }
