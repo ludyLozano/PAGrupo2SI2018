@@ -9,15 +9,15 @@
 #include <iostream>
 using namespace std;
 
-void f1() {
-	cout<<"paso x f1"<<endl;
+void f1(int i) {
+	cout<<"paso x f1: "<<i<<endl;
 }
 
 int main() {
 
-	void (*pf)() = f1;
+	void (*pf)(int) = f1;
 
-	pf();
+	pf(120);
 
 	return 0;
 }
