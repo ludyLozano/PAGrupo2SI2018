@@ -1,5 +1,8 @@
 package ordenpedido;
 
+import Interfaces.IDocumentoTotalizado;
+import facturacion.Factura;
+
 /**
  *
  * @author ONivia
@@ -15,5 +18,10 @@ public class OrdenTrabajo extends Orden {
     @Override
     public void finalizarOrden() {
         System.out.println("se finalizo la Orden de Trabajo");
+    }
+
+    @Override
+    public void totalizar(IDocumentoTotalizado doctotalizado) {
+        doctotalizado.totalizar(doctotalizado);
     }
 }

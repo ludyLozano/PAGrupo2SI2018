@@ -1,5 +1,7 @@
 package principal;
 
+import Interfaces.IDocumentoFinalizable;
+import facturacion.Factura;
 import ordenpedido.Orden;
 import ordenpedido.OrdenCompra;
 import ordenpedido.OrdenTrabajo;
@@ -23,13 +25,15 @@ public class Programa {
         
         //ya se definio que tipo de orden es la que se va a procesar.
         tipoorden = 1;
-        Orden orden = Orden.crearOrden(tipoorden);
+        //Orden orden = Orden.crearOrden(tipoorden);
+        Factura factura = new Factura();
         
-        finalizarOrden(orden);
+        finalizarDocumento(factura);
     }
     
-    private static void finalizarOrden(Orden orden) {
+    //capa de PLL/BLL
+    private static void finalizarDocumento(IDocumentoFinalizable documento) {
         //valido el monto
-        orden.finalizarOrden();        
+        documento.finalizarOrden();        
     }
 }

@@ -1,11 +1,16 @@
 package ordenpedido;
 
+import Interfaces.IDocumentoFinalizable;
+import Interfaces.IDocumentoTotalizado;
+
 /**
  *
  * @author ONivia
  */
-public abstract class Orden {
+public abstract class Orden implements IDocumentoFinalizable, IDocumentoTotalizado {
     public abstract void finalizarOrden();
+    
+    public abstract void totalizar(IDocumentoTotalizado doctotalizado);
     
     public void autorizarOrden() {
         System.out.println("se autorizo la Orden");
