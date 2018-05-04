@@ -1,6 +1,6 @@
 <%-- 
     Document   : consultaorden
-    Created on : 25/04/2018, 06:38:19 PM
+    Created on : 25/04/2018, 08:20:03 PM
     Author     : ONivia
 --%>
 
@@ -9,57 +9,55 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%!
-    //Declaracion
-    enum EstadosPagina {RESPUESTA,MENSAJE}
+    //Declaraciones
+    enum EstadosPagina{RESPUESTA,MENSAJE}
 %>
 <%
-    //Scriptlet
-    EstadosPagina estadopagina = null;
-    String ordenid = null;
-    String contactName = null;
+    EstadosPagina estadoPagina = null;
+    String numorden = null;
     String customerId = null;
+    String contactName = null;
     
     if(request.getParameter("ordenid")!=null) {
-        ordenid = request.getParameter("ordenid");
+        numorden = request.getParameter("ordenid");
         
         CustomerBL customerbl = null;
         Customer cust = null;
         
-        if(!ordenid.equals("")) {
+        if(!numorden.equals("")) {
             customerbl = new CustomerBL();
-            cust = customerbl.obtenerCustomerByOrderId(Integer.parseInt(ordenid));
+            cust = customerbl.obtenerCustomerByOrderId(Integer.parseInt(numorden));
 
-            if(cust != null) {
-                contactName = cust.getContactName();
+            if(cust!=null) {
                 customerId = cust.getCustomerID();
-                estadopagina = EstadosPagina.RESPUESTA;            
+                contactName = cust.getContactName();
+                estadoPagina = EstadosPagina.RESPUESTA;
             } else {
-                estadopagina = EstadosPagina.MENSAJE;
+                estadoPagina = EstadosPagina.MENSAJE;
             }
         }
-    }
-    
+    }    
 %>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Consulta Orden</title>
+        <title>JSP Page</title>
     </head>
     <body>
-        <form name="form1" method="post" action="consultaorden.jsp" autocomplete="off">
-            <h2>Entre La Orden: </h2>
+        <h2>Entre Numero de la Orden: </h2>
+        <form name="form1" method="post" action="consultaorden.jsp">
             <input type="text" name="ordenid" value="">
             <input type="submit" value="Consultar">
         </form>
-        <%if(estadopagina == EstadosPagina.RESPUESTA) {%>
+        <%if(estadoPagina == EstadosPagina.RESPUESTA) { %>
             <p>
-                <b>El ID Cliente es: </b><%=customerId%><br>
+                <b>El Id Cliente es: </b><%=customerId%><br>
                 <b>El Cliente es: </b><%=contactName%><br>
-                <a href="actualizacliente.jsp">Actualizar Cliente</a>
-            </p>
-        <%} else if (estadopagina == EstadosPagina.MENSAJE) {%>
+                <a href="actualizacliente.jsp?customerid=<%=customerId%>">Actualizar Cliente</a>
+            </p>        
+        <%} else if(estadoPagina == EstadosPagina.MENSAJE) {%>        
             <p>
-                <b>La Orden <%=ordenid%> NO existe!</b>
+                <b>La Orden: <%=numorden%> NO existe!</b>
             </p>
         <%}%>
     </body>
